@@ -41,7 +41,15 @@ class CloneCommand extends Command
             ->add('clone')
             ->add('--quiet');
 
+        if ($options['origin']) {
+            $builder
+                ->add('--origin')
+                ->add($options['origin']);
+        }
+        unset($options['origin']);
+
         $this->addFlags($builder, $options);
+
 
         $builder->add($repository);
 
@@ -64,7 +72,8 @@ class CloneCommand extends Command
     {
         $resolver->setDefaults(array(
             'shared' => false,
-            'bare'   => false
+            'bare'   => false,
+            'origin' => null,
         ));
     }
 
