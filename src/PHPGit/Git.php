@@ -90,6 +90,7 @@ use Symfony\Component\Process\ProcessBuilder;
  * @method status($options = array())                               Show the working tree status
  * @method tag()                                                    Returns an array of tags
  * @method tree($branch = 'master', $path = '')                     List the contents of a tree object
+ * @method revParse($revspec, $options = array())                   Return a object name for the specificed rev-spec
  */
 class Git
 {
@@ -175,6 +176,9 @@ class Git
     /** @var Command\TreeCommand */
     public $tree;
 
+    /** @var  Command\RevParseCommand */
+    public $revParse;
+
     /** @var string  */
     private $bin = 'git';
 
@@ -212,6 +216,7 @@ class Git
         $this->status   = new Command\StatusCommand($this);
         $this->tag      = new Command\TagCommand($this);
         $this->tree     = new Command\TreeCommand($this);
+        $this->revParse = new Command\RevParseCommand($this);
     }
 
     /**
