@@ -4,6 +4,7 @@ namespace PHPGit;
 
 use PHPGit\Command;
 use PHPGit\Exception\GitException;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ProcessBuilder;
 
@@ -186,6 +187,11 @@ class Git
     private $directory = '.';
 
     /**
+     * @var LoggerInterface|null
+     */
+    protected $logger;
+
+    /**
      * Timeout for the process
      * @var int
      */
@@ -193,8 +199,10 @@ class Git
 
     /**
      * Initializes sub-commands
+     *
+     * @param LoggerInterface|null $logger
      */
-    public function __construct()
+    public function __construct(LoggerInterface $logger = null)
     {
         $this->add      = new Command\AddCommand($this);
         $this->archive  = new Command\ArchiveCommand($this);
@@ -223,6 +231,8 @@ class Git
         $this->tag      = new Command\TagCommand($this);
         $this->tree     = new Command\TreeCommand($this);
         $this->revParse = new Command\RevParseCommand($this);
+
+        $this->logger = $logger;
     }
 
     /**
@@ -316,6 +326,10 @@ class Git
      */
     public function run(Process $process)
     {
+        if ($this->logger instanceof LoggerInterface) {
+            $this->logger->debug('Running: ' . $process->getCommandLine());
+        }
+
         if ($this->timeout !== false) {
             $process->setTimeout($this->timeout);
         }
