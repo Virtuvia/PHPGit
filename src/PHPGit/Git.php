@@ -186,6 +186,12 @@ class Git
     private $directory = '.';
 
     /**
+     * Timeout for the process
+     * @var int
+     */
+    public $timeout = false;
+
+    /**
      * Initializes sub-commands
      */
     public function __construct()
@@ -292,6 +298,15 @@ class Git
     }
 
     /**
+     * Sets the timeout for the process
+     * @param $timeout
+     */
+    public function setTimeout($timeout)
+    {
+        $this->timeout = $timeout;
+    }
+
+    /**
      * Executes a process
      *
      * @param Process $process The process to run
@@ -301,6 +316,10 @@ class Git
      */
     public function run(Process $process)
     {
+        if ($this->timeout !== false) {
+            $process->setTimeout($this->timeout);
+        }
+
         $process->run();
 
         if (!$process->isSuccessful()) {
