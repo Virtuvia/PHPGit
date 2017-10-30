@@ -31,8 +31,6 @@ class RevParseCommand extends Command
             'short' => false,
         ]);
 
-        $resolver->setAllowedTypes([
-            'short' => 'bool',
-        ]);
+        $resolver->setAllowedTypes('short', 'bool');
     }
 }

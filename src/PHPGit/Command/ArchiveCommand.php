@@ -87,15 +87,11 @@ class ArchiveCommand extends Command
             'remote' => null
         ));
 
-        $resolver->setAllowedTypes(array(
-            'format' => array('null', 'string'),
-            'prefix' => array('null', 'string'),
-            'remote' => array('null', 'string')
-        ));
+        $resolver->setAllowedTypes('format', ['null', 'string']);
+        $resolver->setAllowedTypes('prefix', ['null', 'string']);
+        $resolver->setAllowedTypes('remote', ['null', 'string']);
 
-        $resolver->setAllowedValues(array(
-            'format' => array('tar', 'zip')
-        ));
+        $resolver->setAllowedValues('format', ['tar', 'zip']);
     }
 
 
