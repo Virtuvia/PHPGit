@@ -79,9 +79,7 @@ class CommitCommand extends Command
             'amend'         => false
         ));
 
-        $resolver->setAllowedValues(array(
-            'cleanup' => array(null, 'default', 'verbatim', 'whitespace', 'strip')
-        ));
+        $resolver->setAllowedValues('cleanup', array(null, 'default', 'verbatim', 'whitespace', 'strip'));
     }
 
 } 
