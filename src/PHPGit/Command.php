@@ -3,7 +3,6 @@
 namespace PHPGit;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Process\ProcessBuilder;
 
 /**
@@ -119,5 +118,4 @@ abstract class Command
             }
         }
     }
-
-} 
+}
