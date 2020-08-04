@@ -6,7 +6,6 @@ use PHPGit\Command;
 use PHPGit\Exception\GitException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Process\ProcessBuilder;
 
 /**
  * PHPGit - A Git wrapper for PHP5.3+
@@ -295,12 +294,7 @@ class Git
         return $this->run($process);
     }
 
-    /**
-     * Returns an instance of ProcessBuilder
-     *
-     * @return ProcessBuilder
-     */
-    public function getProcessBuilder()
+    public function getProcessBuilder(): ProcessBuilder
     {
         return ProcessBuilder::create()
             ->setPrefix($this->bin)

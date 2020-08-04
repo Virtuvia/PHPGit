@@ -11,11 +11,11 @@
     ],
     "require": {
         "php": "^5.3.2 || ^7.3",
-        "symfony/process": "^3.4",
-        "symfony/options-resolver": "^3.4"
+        "symfony/process": "^3.4 || ^4.4",
+        "symfony/options-resolver": "^3.4 || ^4.4"
     },
     "require-dev": {
-        "symfony/filesystem": "^3.4"
+        "symfony/filesystem": "^3.4 || ^4.4"
     },
     "autoload": {
         "psr-0": {

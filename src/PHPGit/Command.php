@@ -3,7 +3,6 @@
 namespace PHPGit;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Process\ProcessBuilder;
 
 /**
  * Base class for git commands

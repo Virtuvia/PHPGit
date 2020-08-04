@@ -4,6 +4,7 @@ namespace PHPGit\Command;
 
 use PHPGit\Command;
 use PHPGit\Exception\GitException;
+use PHPGit\ProcessBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -217,10 +218,7 @@ class BranchCommand extends Command
         ));
     }
 
-    /**
-     * @return \Symfony\Component\Process\ProcessBuilder
-     */
-    protected function getProcessBuilder()
+    protected function getProcessBuilder(): ProcessBuilder
     {
         return $this->git->getProcessBuilder()
             ->add('branch');
