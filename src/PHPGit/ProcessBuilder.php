@@ -29,6 +29,7 @@ namespace PHPGit;
 use Symfony\Component\Process\Exception\InvalidArgumentException;
 use Symfony\Component\Process\Exception\LogicException;
 use Symfony\Component\Process\ProcessUtils;
+use Symfony\Component\Process\Process;
 
 /**
  * @author Kris Wallsmith <kris@symfony.com>
